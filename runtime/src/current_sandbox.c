@@ -54,7 +54,7 @@ current_sandbox_initialize_io_handle(void)
 	return sandbox_initialize_io_handle(current_sandbox_get());
 }
 
-int sandbox_parse_http_request(struct sandbox *sandbox, size_t l);
+size_t sandbox_parse_http_request(struct sandbox *sandbox, size_t l);
 
 /**
  * Sets the file descriptor of the sandbox's ith io_handle
@@ -90,16 +90,4 @@ current_sandbox_close_file_descriptor(int io_handle_index)
 {
 	struct sandbox *sandbox = current_sandbox_get();
 	sandbox_close_file_descriptor(sandbox, io_handle_index);
-}
-
-/**
- * Get the Libuv handle located at idx of the sandbox ith io_handle
- * @param io_handle_index index of the handle containing libuv_handle???
- * @returns any libuv handle
- */
-union uv_any_handle *
-current_sandbox_get_libuv_handle(int io_handle_index)
-{
-	struct sandbox *sandbox = current_sandbox_get();
-	return sandbox_get_libuv_handle(sandbox, io_handle_index);
 }

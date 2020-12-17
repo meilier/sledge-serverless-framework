@@ -82,9 +82,9 @@ sigalrm_handler(siginfo_t *signal_info, ucontext_t *user_context, struct sandbox
 	if (!software_interrupt_is_enabled()) return;
 
 	/*
-	 * if a SIGALRM fires while the worker thread is between sandboxes, executing libuv, completion queue
-	 * cleanup, etc. current_sandbox might be NULL. In this case, we should just allow return to allow the
-	 * worker thread to run the main loop until it loads a new sandbox.
+	 * if a SIGALRM fires while the worker thread is between sandboxes doing runtime tasks such as processing
+	 * the epoll loop, performing completion queue cleanup, etc. current_sandbox might be NULL. In this case,
+	 * we should just allow return to allow the worker thread to run the main loop until it loads a new sandbox.
 	 *
 	 * TODO: Consider if this should be an invarient and the worker thread should disable software
 	 * interrupts when doing this work. Issue #95
@@ -129,6 +129,8 @@ sigusr1_handler(siginfo_t *signal_info, ucontext_t *user_context, struct sandbox
 
 #ifdef LOG_PREEMPTION
 	debuglog("Total SIGUSR1 Received: %d\n", software_interrupt_SIGUSR_count);
+	debuglog("Restoring sandbox: %lu, Stack %llu\n", current_sandbox->id,
+	         current_sandbox->ctxt.mctx.gregs[REG_RSP]);
 #endif
 
 	arch_mcontext_restore(&user_context->uc_mcontext, &current_sandbox->ctxt);
@@ -176,13 +178,14 @@ software_interrupt_handle_signals(int signal_type, siginfo_t *signal_info, void 
 	case SIGUSR1: {
 		return sigusr1_handler(signal_info, user_context, current_sandbox);
 	}
-	default:
+	default: {
 		if (signal_info->si_code == SI_TKILL) {
 			panic("Unexpectedly received signal %d from a thread kill, but we have no handler\n",
 			      signal_type);
 		} else if (signal_info->si_code == SI_KERNEL) {
 			panic("Unexpectedly received signal %d from the kernel, but we have no handler\n", signal_type);
 		}
+	}
 	}
 #endif
 }
