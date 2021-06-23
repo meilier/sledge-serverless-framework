@@ -86,7 +86,7 @@ envsetup() {
 
 	# Build the image sledge-dev:latest
 	echo "Building ${SYS_DOC_DEVNAMETAG}"
-	docker build --tag "${SYS_DOC_DEVNAMETAG}" .
+	docker build --network=host --build-arg http_proxy=http://127.0.0.1:8888 --build-arg https_proxy=http://127.0.0.1:8888 --tag "${SYS_DOC_DEVNAMETAG}" .
 
 	# Run the sledge-dev:latest image as a background container named sledge-dev with the project directly mounted at /sledge
 	echo "Creating the build container ${SYS_DOC_NAMETAG} from the image ${SYS_DOC_DEVNAMETAG}"
@@ -96,6 +96,45 @@ envsetup() {
 
 	docker run \
 		--privileged \
+		--network=host \
+		--env HTTP_PROXY="http://127.0.0.1:8888" \
+		--env HTTPS_PROXY="http://127.0.0.1:8888" \
+		--name=${SYS_DOC_DEVNAME} \
+		--detach \
+		--mount type=bind,source="$host_dir",target="$HOST_SYS_MOUNT" \
+		"${SYS_DOC_DEVNAMETAG}" /bin/sleep 99999999 > /dev/null
+
+	# Execute the make install command on the sledge-dev image to build the project
+	echo "Building ${SYS_NAME}"
+	docker exec \
+		--tty \
+		--workdir "${HOST_SYS_MOUNT}" \
+		${SYS_DOC_DEVNAME} make install
+
+	# Create the image sledge:latest from the current state of docker-dev
+	echo "Tagging the new image"
+	docker container commit ${SYS_DOC_DEVNAME} ${SYS_DOC_NAMETAG}
+
+	# Kill and remove the running sledge-dev container
+	echo "Cleaning up ${SYS_DOC_DEVNAME}"
+	docker kill ${SYS_DOC_DEVNAME}
+	docker rm ${SYS_DOC_DEVNAME}
+
+	echo "Done!"
+}
+
+build() {
+	# Run the sledge-dev:latest image as a background container named sledge-dev with the project directly mounted at /sledge
+	echo "Creating the build container ${SYS_DOC_NAMETAG} from the image ${SYS_DOC_DEVNAMETAG}"
+
+	host_dir="$(cd "$(dirname "${0}")" && pwd -P || exit 1)"
+	echo "Bind mounting $host_dir at $HOST_SYS_MOUNT"
+
+	docker run \
+		--privileged \
+		--network host \
+		--env http_proxy="http://127.0.0.1:8888" \
+		--env https_proxy="http://127.0.0.1:8888" \
 		--name=${SYS_DOC_DEVNAME} \
 		--detach \
 		--mount type=bind,source="$host_dir",target="$HOST_SYS_MOUNT" \
@@ -182,6 +221,9 @@ case $1 in
 		;;
 	setup)
 		envsetup
+		;;
+	build)
+		build
 		;;
 	rm)
 		envrm

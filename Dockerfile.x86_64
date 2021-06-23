@@ -83,24 +83,24 @@ RUN ./sledge/install_llvm.sh $LLVM_VERSION
 # ENV WASI_SDK=/opt/wasi-sdk
 
 # Create non-root user and add to sudoers
-ARG USERNAME=dev
-ARG USER_UID=1000
-ARG USER_GID=$USER_UID
-RUN groupadd --gid $USER_GID $USERNAME
-RUN useradd --uid $USER_UID --gid $USER_GID -m $USERNAME
-RUN apt-get update && apt-get install -y sudo
-RUN echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME
-RUN chmod 0440 /etc/sudoers.d/$USERNAME
+# ARG USERNAME=dev
+# ARG USER_UID=1000
+# ARG USER_GID=$USER_UID
+# RUN groupadd --gid $USER_GID $USERNAME
+# RUN useradd --uid $USER_UID --gid $USER_GID -m $USERNAME
+# RUN apt-get update && apt-get install -y sudo
+# RUN echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME
+# RUN chmod 0440 /etc/sudoers.d/$USERNAME
 
 # Make non-root user default user and use for rest of Dockerfile
-USER $USER_UID
+# USER $USER_UID
 
 # Make sure the mount point and installation target and any files therein are owned by the non-root user
-RUN sudo chown $USER_GID:$USER_GID /sledge
-ADD fix_root.sh /sledge/fix_root.sh
-RUN cd sledge && ./fix_root.sh
-RUN sudo mkdir /opt/sledge
-RUN sudo chown $USER_GID:$USER_GID /opt/sledge
+# RUN sudo chown $USER_GID:$USER_GID /sledge
+# ADD fix_root.sh /sledge/fix_root.sh
+# RUN cd sledge && ./fix_root.sh
+RUN mkdir /opt/sledge
+# RUN sudo chown $USER_GID:$USER_GID /opt/sledge
 
 ################################
 # Final Setup as non-root user #
@@ -109,7 +109,7 @@ RUN sudo chown $USER_GID:$USER_GID /opt/sledge
 # Rust
 # Rustup does not cleanly support system installs, so install as non-root user
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- --default-toolchain stable --component rustfmt --target wasm32-wasi -y
-ENV PATH=/home/dev/.cargo/bin:$PATH
+ENV PATH=/root/.cargo/bin:$PATH
 RUN cargo install --debug cargo-audit cargo-watch rsign2
 
 # We need to set the locale for pango-view

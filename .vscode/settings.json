@@ -87,7 +87,8 @@
 		"debuglog.h": "c",
 		"worker_thread_execute_epoll_loop.h": "c",
 		"sandbox_set_as_running.h": "c",
-		"sandbox_summarize_page_allocations.h": "c"
+		"sandbox_summarize_page_allocations.h": "c",
+		"memory": "cpp"
 	},
 	"files.exclude": {
 		"**/.git": true,
