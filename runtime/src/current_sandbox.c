@@ -7,6 +7,7 @@
 #include "sandbox_setup_arguments.h"
 #include "scheduler.h"
 #include "software_interrupt.h"
+#include "time.h"
 
 __thread struct sandbox *worker_thread_current_sandbox = NULL;
 
@@ -60,6 +61,8 @@ current_sandbox_disable_preemption(struct sandbox *sandbox)
 void
 current_sandbox_start(void)
 {
+	struct timeval start,end;  
+	gettimeofday(&start, NULL );
 	struct sandbox *sandbox = current_sandbox_get();
 	assert(sandbox != NULL);
 	assert(sandbox->state == SANDBOX_RUNNING);
@@ -68,17 +71,24 @@ current_sandbox_start(void)
 
 	sandbox_initialize_stdio(sandbox);
 
+
+
+	/* Initialize sandbox memory */
+	struct module *current_module = sandbox_get_module(sandbox);
+
+
+	module_initialize_globals(current_module);
+	module_initialize_memory(current_module);
+ 
+
+	
+
 	sandbox_open_http(sandbox);
 
 	if (sandbox_receive_request(sandbox) < 0) {
 		error_message = "Unable to receive or parse client request\n";
 		goto err;
 	};
-
-	/* Initialize sandbox memory */
-	struct module *current_module = sandbox_get_module(sandbox);
-	module_initialize_globals(current_module);
-	module_initialize_memory(current_module);
 	sandbox_setup_arguments(sandbox);
 
 	/* Executing the function */
@@ -93,6 +103,9 @@ current_sandbox_start(void)
 		error_message = "Unable to build and send client response\n";
 		goto err;
 	};
+	gettimeofday(&end, NULL ); 
+	double timeuse = (end.tv_usec - start.tv_usec);
+    printf("time use %d\n",timeuse);
 
 	http_total_increment_2xx();
 
@@ -106,6 +119,7 @@ done:
 	/* Cleanup connection and exit sandbox */
 	generic_thread_dump_lock_overhead();
 	scheduler_yield();
+
 
 	/* This assert prevents a segfault discussed in
 	 * https://github.com/phanikishoreg/awsm-Serverless-Framework/issues/66
