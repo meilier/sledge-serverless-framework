@@ -4,10 +4,16 @@ TESTS=fibonacci empty work work1k work10k work100k work1m forever filesys sockse
 
 TESTSRT=$(TESTS:%=%_rt)
 
+TESTSP=fibonacci_pure
+
+TESTSRTP=$(TESTSP:%=%_rt)
+
 .PHONY: all clean rttests tinyekf cifar10 gocr sod
 
 all: rttests tinyekf cifar10 gocr sod
 	@echo "Test Compilation done!"
+
+fib_pure: $(TESTSRTP)
 
 rttests: $(TESTSRT)
 

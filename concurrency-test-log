@@ -1,0 +1,1013 @@
++ cd /sledge/awsm
++ cargo build --release
+    Finished release [optimized + debuginfo] target(s) in 0.16s
++ make all -C /sledge/runtime
+make: Entering directory '/sledge/runtime'
+Compiling runtime
+src/current_sandbox.c:65:2: warning: implicit declaration of function 'gettimeofday' is invalid in C99 [-Wimplicit-function-declaration]
+        gettimeofday(&start, NULL );
+        ^
+src/current_sandbox.c:108:28: warning: format specifies type 'int' but the argument has type 'double' [-Wformat]
+    printf("time use %d\n",timeuse);
+                     ~~    ^~~~~~~
+                     %f
+2 warnings generated.
+make: Leaving directory '/sledge/runtime'
++ (( 1 == 0 ))
++ for test in "$@"
++ [[ !  ocr_hyde ocr_handwriting ocr_fivebyeight ocr_by_word ocr_by_font ocr_by_dpi ekf_by_iteration ekf_one_iteration image_classification image_resize image_resize_by_resolution lpd_by_plate_count bimodal concurrency payload  =~  concurrency  ]]
++ concurrency
++ echo Concurrency
+Concurrency
++ [[ ! -f /sledge/runtime/bin/empty_wasm.so ]]
++ pushd /sledge/runtime/experiments/concurrency/
+/sledge/runtime/experiments/concurrency /sledge/awsm
++ bash -x run.sh
++++ realpath --logical run.sh
+++ dirname /sledge/runtime/experiments/concurrency/run.sh
++ __run_sh__base_path=/sledge/runtime/experiments/concurrency
++ __run_sh__bash_libraries_relative_path=../bash_libraries
+++ cd /sledge/runtime/experiments/concurrency
+++ cd ../bash_libraries
+++ pwd
++ __run_sh__bash_libraries_absolute_path=/sledge/runtime/experiments/bash_libraries
++ export PATH=/sledge/runtime/experiments/bash_libraries:/opt/sledge/bin:/root/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++ PATH=/sledge/runtime/experiments/bash_libraries:/opt/sledge/bin:/root/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++ source csv_to_dat.sh
+++ '[' -n '' ']'
++++ date
+++ __csv_to_dat_sh__='Mon Aug  2 03:31:11 UTC 2021'
+++ source panic.sh
++++ '[' -n '' ']'
+++++ date
++++ __panic_sh__='Mon Aug  2 03:31:11 UTC 2021'
++++ source error_msg.sh
+++++ '[' -n '' ']'
++++++ date
+++++ __error_msg_sh__='Mon Aug  2 03:31:11 UTC 2021'
++++ declare __common_did_dump_callstack=false
++ source framework.sh
+++ '[' -n '' ']'
++++ date
+++ __framework_sh__='Mon Aug  2 03:31:11 UTC 2021'
+++ source fn_exists.sh
++++ '[' -n '' ']'
+++++ date
++++ __fn_exists_sh__='Mon Aug  2 03:31:11 UTC 2021'
+++ source path_join.sh
++++ '[' -n '' ']'
+++++ date
++++ __path_join_sh__='Mon Aug  2 03:31:11 UTC 2021'
+++ source panic.sh
++++ '[' -n 'Mon Aug  2 03:31:11 UTC 2021' ']'
++++ return
+++ source type_checks.sh
+++ source validate_dependencies.sh
++++ '[' -n '' ']'
+++++ date
++++ __validate_dependencies_sh__='Mon Aug  2 03:31:11 UTC 2021'
++ source generate_gnuplots.sh
+++ '[' -n '' ']'
++++ date
+++ __generate_gnuplots_sh__='Mon Aug  2 03:31:11 UTC 2021'
+++ source panic.sh
++++ '[' -n 'Mon Aug  2 03:31:11 UTC 2021' ']'
++++ return
++ source get_result_count.sh
+++ '[' -n '' ']'
++++ date
+++ __get_result_count_sh__='Mon Aug  2 03:31:11 UTC 2021'
+++ source panic.sh
++++ '[' -n 'Mon Aug  2 03:31:11 UTC 2021' ']'
++++ return
++ source panic.sh
+++ '[' -n 'Mon Aug  2 03:31:11 UTC 2021' ']'
+++ return
++ source percentiles_table.sh
+++ source type_checks.sh
++ source path_join.sh
+++ '[' -n 'Mon Aug  2 03:31:11 UTC 2021' ']'
+++ return
++ command -v hey
++ declare -gi iterations=10000
++ concurrency=(1 20 40 60 80 100)
++ declare -ga concurrency
++ framework_init
++ __framework_sh__initialize_globals
+++ date +%s
++ declare -gir __framework_sh__timestamp=1627875072
++ declare -g __framework_sh__experiment_name=1627875072
++ declare -g __framework_sh__target=
++ declare -g __framework_sh__role=
++ declare -g __framework_sh__envfile=
++++ realpath run.sh
+++ dirname '/sledge/runtime/experiments/concurrency/run.sh)'
++ declare -gr __framework_sh__application_directory=/sledge/runtime/experiments/concurrency
++++ realpath /sledge/runtime/experiments/bash_libraries/framework.sh
+++ dirname /sledge/runtime/experiments/bash_libraries/framework.sh
++ declare -gr __framework_sh__path=/sledge/runtime/experiments/bash_libraries
+++ cd /sledge/runtime/experiments/bash_libraries
+++ cd ../../bin
+++ pwd
++ local -r binary_directory=/sledge/runtime/bin
++ export PATH=/sledge/runtime/bin:/sledge/runtime/experiments/bash_libraries:/opt/sledge/bin:/root/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++ PATH=/sledge/runtime/bin:/sledge/runtime/experiments/bash_libraries:/opt/sledge/bin:/root/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++ export LD_LIBRARY_PATH=/sledge/runtime/bin:/opt/sledge/bin:
++ LD_LIBRARY_PATH=/sledge/runtime/bin:/opt/sledge/bin:
++ __framework_sh__parse_arguments
++ [[ -z '' ]]
++ [[ -d /sledge/runtime/experiments/concurrency/res/1627875072/ ]]
++ [[ -z '' ]]
++ __framework_sh__role=both
++ __framework_sh__target=localhost
++ declare -r __framework_sh__target
++ declare -r __framework_sh__role
++ __framework_sh__create_and_export_results_directory
++ local -r subdirectory=
++ local dir=/sledge/runtime/experiments/concurrency/res/1627875072/
++ mkdir -p /sledge/runtime/experiments/concurrency/res/1627875072/
++ export RESULTS_DIRECTORY=/sledge/runtime/experiments/concurrency/res/1627875072/
++ RESULTS_DIRECTORY=/sledge/runtime/experiments/concurrency/res/1627875072/
++ echo role is both
+role is both
++ case $__framework_sh__role in
++ __framework_sh__validate_client
+++ type -t experiment_client
++ [[ function != \f\u\n\c\t\i\o\n ]]
++ __framework_sh__run_both
++ shopt -s nullglob
++ echo env file is
+env file is
++ [[ -n '' ]]
++ local -i envfiles_found=0
++ for envfile in "$__framework_sh__application_directory"/*.env
++ (( envfiles_found++ ))
++ echo dir is /sledge/runtime/experiments/concurrency
+dir is /sledge/runtime/experiments/concurrency
++ __framework_sh__run_both_env /sledge/runtime/experiments/concurrency/edf_nopreemption.env
++ local envfile=/sledge/runtime/experiments/concurrency/edf_nopreemption.env
++ __framework_sh__load_env_file /sledge/runtime/experiments/concurrency/edf_nopreemption.env
++ local envfile=/sledge/runtime/experiments/concurrency/edf_nopreemption.env
++ [[ ! -f /sledge/runtime/experiments/concurrency/edf_nopreemption.env ]]
++ local short_name
+++ basename /sledge/runtime/experiments/concurrency/edf_nopreemption
++ short_name=edf_nopreemption
++ printf 'Running %s\n' edf_nopreemption
+Running edf_nopreemption
++ read -r line
++ echo export SLEDGE_SCHEDULER=EDF
+export SLEDGE_SCHEDULER=EDF
++ export SLEDGE_SCHEDULER=EDF
++ SLEDGE_SCHEDULER=EDF
++ read -r line
++ echo export SLEDGE_DISABLE_PREEMPTION=true
+export SLEDGE_DISABLE_PREEMPTION=true
++ export SLEDGE_DISABLE_PREEMPTION=true
++ SLEDGE_DISABLE_PREEMPTION=true
++ read -r line
++ __framework_sh__create_and_export_results_directory edf_nopreemption
++ local -r subdirectory=edf_nopreemption
++ local dir=/sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption
++ mkdir -p /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption
++ export RESULTS_DIRECTORY=/sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption
++ RESULTS_DIRECTORY=/sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption
++ __framework_sh__run_server background
++ (( 1 != 1 ))
++ [[ background =~ ^(foreground|background)$ ]]
++ local -r how_to_run=background
++ __framework_sh__start_runtime background /sledge/runtime/experiments/concurrency/spec.json
++ printf 'Starting Runtime: '
+Starting Runtime: + (( 2 != 2 ))
++ [[ background =~ ^(foreground|background)$ ]]
++ [[ ! -f /sledge/runtime/experiments/concurrency/spec.json ]]
++ [[ /sledge/runtime/experiments/concurrency/spec.json != *.json ]]
++ local -r how_to_run=background
++ local -r specification=/sledge/runtime/experiments/concurrency/spec.json
++ local -r log_name=log.txt
++ local log=/sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/log.txt
++ __framework_sh__log_environment
++ validate_dependencies git
++ for required_binary in "$@"
++ command -v git
++ return 0
++ echo '*******'
++ echo '* Git *'
++ echo '*******'
++ head -n 1
++ git log
++ cut '-d ' -f2
++ git status
++ echo ''
++ echo '************'
++ echo '* Makefile *'
++ echo '************'
+++ path_join /sledge/runtime/experiments/bash_libraries ../../Makefile
+++ local base=/sledge/runtime/experiments/bash_libraries
+++ local relative=../../Makefile
++++ dirname ../../Makefile
+++ relative_path=../..
++++ basename ../../Makefile
+++ file_name=Makefile
++++ cd /sledge/runtime/experiments/bash_libraries
++++ cd ../..
++++ pwd
+++ absolute_path=/sledge/runtime
+++ echo /sledge/runtime/Makefile
++ cat /sledge/runtime/Makefile
++ echo ''
++ echo '**********'
++ echo '* Run.sh *'
++ echo '**********'
+++ path_join /sledge/runtime/experiments/concurrency ./run.sh
+++ local base=/sledge/runtime/experiments/concurrency
+++ local relative=./run.sh
++++ dirname ./run.sh
+++ relative_path=.
++++ basename ./run.sh
+++ file_name=run.sh
++++ cd /sledge/runtime/experiments/concurrency
++++ cd .
++++ pwd
+++ absolute_path=/sledge/runtime/experiments/concurrency
+++ echo /sledge/runtime/experiments/concurrency/run.sh
++ cat /sledge/runtime/experiments/concurrency/run.sh
++ echo ''
++ echo '************'
++ echo '* Hardware *'
++ echo '************'
++ lscpu
++ echo ''
++ echo '*************'
++ echo '* Execution *'
++ echo '*************'
++ case "$how_to_run" in
++ sleep 1
++ sledgert /sledge/runtime/experiments/concurrency/spec.json
++ printf '[OK]\n'
+[OK]
++ return 0
++ return 0
++ __framework_sh__run_client
++ echo localhost /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption
+localhost /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption
++ experiment_client localhost /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption
++ local -r target_hostname=localhost
++ local -r results_directory=/sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption
++ run_samples localhost
++ (( 1 != 1 ))
++ [[ -z localhost ]]
++ local hostname=localhost
+++ path_join /sledge/runtime/experiments/concurrency ../../include/perf_window_t.h
+++ local base=/sledge/runtime/experiments/concurrency
+++ local relative=../../include/perf_window_t.h
++++ dirname ../../include/perf_window_t.h
+++ relative_path=../../include
++++ basename ../../include/perf_window_t.h
+++ file_name=perf_window_t.h
++++ cd /sledge/runtime/experiments/concurrency
++++ cd ../../include
++++ pwd
+++ absolute_path=/sledge/runtime/include
+++ echo /sledge/runtime/include/perf_window_t.h
++ local -r perf_window_path=/sledge/runtime/include/perf_window_t.h
++ local -i perf_window_buffer_size
+++ grep '#define PERF_WINDOW_BUFFER_SIZE'
+++ cut '-d ' -f3
++ perf_window_buffer_size=16
++ local -ir perf_window_buffer_size
++ printf 'Running Samples: '
+Running Samples: + hey -n 16 -c 16 -q 200 -cpus 3 -o csv -m GET http://localhost:10000
++ printf '[OK]\n'
+[OK]
++ return 0
++ run_experiments localhost /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption
++ (( 2 != 2 ))
++ [[ -z localhost ]]
++ [[ ! -d /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption ]]
++ local hostname=localhost
++ local results_directory=/sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption
++ printf 'Running Experiments:\n'
+Running Experiments:
++ for conn in ${concurrency[*]}
++ printf '\t%d Concurrency: ' 1
+        1 Concurrency: + hey -n 10000 -c 1 -cpus 2 -o csv -m GET http://localhost:10000
++ get_result_count /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con1.csv
++ (( 1 != 1 ))
++ [[ ! -f /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con1.csv ]]
++ [[ ! -s /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con1.csv ]]
++ local -r file=/sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con1.csv
+++ wc -l
++ local -i count=10000
++ (( 1 == 2 ))
++ (( count > 0 ))
++ return 0
++ printf '[OK]\n'
+[OK]
++ for conn in ${concurrency[*]}
++ printf '\t%d Concurrency: ' 20
+        20 Concurrency: + hey -n 10000 -c 20 -cpus 2 -o csv -m GET http://localhost:10000
++ get_result_count /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con20.csv
++ (( 1 != 1 ))
++ [[ ! -f /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con20.csv ]]
++ [[ ! -s /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con20.csv ]]
++ local -r file=/sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con20.csv
+++ wc -l
++ local -i count=10000
++ (( 1 == 2 ))
++ (( count > 0 ))
++ return 0
++ printf '[OK]\n'
+[OK]
++ for conn in ${concurrency[*]}
++ printf '\t%d Concurrency: ' 40
+        40 Concurrency: + hey -n 10000 -c 40 -cpus 2 -o csv -m GET http://localhost:10000
++ get_result_count /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con40.csv
++ (( 1 != 1 ))
++ [[ ! -f /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con40.csv ]]
++ [[ ! -s /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con40.csv ]]
++ local -r file=/sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con40.csv
+++ wc -l
++ local -i count=10000
++ (( 1 == 2 ))
++ (( count > 0 ))
++ return 0
++ printf '[OK]\n'
+[OK]
++ for conn in ${concurrency[*]}
++ printf '\t%d Concurrency: ' 60
+        60 Concurrency: + hey -n 10000 -c 60 -cpus 2 -o csv -m GET http://localhost:10000
++ get_result_count /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con60.csv
++ (( 1 != 1 ))
++ [[ ! -f /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con60.csv ]]
++ [[ ! -s /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con60.csv ]]
++ local -r file=/sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con60.csv
+++ wc -l
++ local -i count=9913
++ (( 1 == 2 ))
++ (( count > 0 ))
++ return 0
++ printf '[OK]\n'
+[OK]
++ for conn in ${concurrency[*]}
++ printf '\t%d Concurrency: ' 80
+        80 Concurrency: + hey -n 10000 -c 80 -cpus 2 -o csv -m GET http://localhost:10000
++ get_result_count /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con80.csv
++ (( 1 != 1 ))
++ [[ ! -f /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con80.csv ]]
++ [[ ! -s /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con80.csv ]]
++ local -r file=/sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con80.csv
+++ wc -l
++ local -i count=10000
++ (( 1 == 2 ))
++ (( count > 0 ))
++ return 0
++ printf '[OK]\n'
+[OK]
++ for conn in ${concurrency[*]}
++ printf '\t%d Concurrency: ' 100
+        100 Concurrency: + hey -n 10000 -c 100 -cpus 2 -o csv -m GET http://localhost:10000
++ get_result_count /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con100.csv
++ (( 1 != 1 ))
++ [[ ! -f /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con100.csv ]]
++ [[ ! -s /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con100.csv ]]
++ local -r file=/sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con100.csv
+++ wc -l
++ local -i count=10000
++ (( 1 == 2 ))
++ (( count > 0 ))
++ return 0
++ printf '[OK]\n'
+[OK]
++ return 0
++ process_results /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption
++ (( 1 != 1 ))
++ [[ -d /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption ]]
++ local -r results_directory=/sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption
++ printf 'Processing Results: '
+Processing Results: + printf 'Concurrency,Success_Rate\n'
++ printf 'Concurrency,Throughput\n'
++ percentiles_table_header /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/latency.csv Con
++ local table_file=/sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/latency.csv
++ local label_header=Con
++ echo Con,cnt,min,mean,p50,p90,p99,max
++ for conn in ${concurrency[*]}
++ [[ ! -f /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con1.csv ]]
++ awk -F, '
+                $7 == 200 {ok++}
+                END{printf "1,%3.5f\n", (ok / 10000 * 100)}
+        '
++ awk -F, '$7 == 200 {print ($1 * 1000)}'
++ sort -g
+++ wc -l
++ oks=10000
++ (( oks == 0 ))
+++ tail -n1 /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con1.csv
+++ cut -d, -f8
++ duration=66.5873
+++ bc
+++ echo 10000/66.5873
++ throughput=150
++ printf '%d,%f\n' 1 150
++ percentiles_table_row /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con1-response.csv /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/latency.csv 1
++ local -r columnar_data_file=/sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con1-response.csv
++ check_file columnar_data_file
++ local arg_raw=columnar_data_file
++ local -n arg=columnar_data_file
++ [[ ! -f /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con1-response.csv ]]
++ return 0
++ local -r table_file=/sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/latency.csv
++ check_file table_file
++ local arg_raw=table_file
++ local -n arg=table_file
++ [[ ! -f /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/latency.csv ]]
++ return 0
++ local -r row_label=1
++ local -r format_string=%1.4f
++ local -i sample_size
+++ wc -l
++ sample_size=10000
++ (( sample_size == 0 ))
++ awk '
+                        BEGIN {
+                                sample_size=10000
+                                row_label="1"
+                                format_string="%1.4f"
+                                invalid_number_symbol="*"
+                                sum = 0
+                                p50_idx = int(sample_size * 0.5)
+                                p90_idx = int(sample_size * 0.9)
+                                p99_idx = int(sample_size * 0.99)
+                                p100_idx = sample_size
+                        }
+
+                        # Empty pattern matches all rows
+                                     { sum += $0 }
+                        NR==1            { min = sample_size  > 0   ? sprintf(format_string, $0) : invalid_number_symbol }
+                        NR==p50_idx  { p50 = sample_size >= 3   ? sprintf(format_string, $0) : invalid_number_symbol }
+                        NR==p90_idx  { p90 = sample_size >= 10  ? sprintf(format_string, $0) : invalid_number_symbol }
+                        NR==p99_idx  { p99 = sample_size >= 100 ? sprintf(format_string, $0) : invalid_number_symbol }
+                        NR==p100_idx { p100 = sample_size > 0   ? sprintf(format_string, $0) : invalid_number_symbol }
+
+                        END {
+                                mean = sample_size > 0 ? sprintf(format_string, sum / NR) : invalid_number_symbol
+                                printf "%s,%d,%s,%s,%s,%s,%s,%s\n", row_label, sample_size, min, mean, p50, p90, p99, p100
+                        }
+                '
++ rm -rf /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con1-response.csv
++ for conn in ${concurrency[*]}
++ [[ ! -f /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con20.csv ]]
++ awk -F, '
+                $7 == 200 {ok++}
+                END{printf "20,%3.5f\n", (ok / 10000 * 100)}
+        '
++ awk -F, '$7 == 200 {print ($1 * 1000)}'
++ sort -g
+++ wc -l
++ oks=10000
++ (( oks == 0 ))
+++ tail -n1 /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con20.csv
+++ cut -d, -f8
++ duration=3.3954
+++ echo 10000/3.3954
+++ bc
++ throughput=2945
++ printf '%d,%f\n' 20 2945
++ percentiles_table_row /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con20-response.csv /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/latency.csv 20
++ local -r columnar_data_file=/sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con20-response.csv
++ check_file columnar_data_file
++ local arg_raw=columnar_data_file
++ local -n arg=columnar_data_file
++ [[ ! -f /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con20-response.csv ]]
++ return 0
++ local -r table_file=/sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/latency.csv
++ check_file table_file
++ local arg_raw=table_file
++ local -n arg=table_file
++ [[ ! -f /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/latency.csv ]]
++ return 0
++ local -r row_label=20
++ local -r format_string=%1.4f
++ local -i sample_size
+++ wc -l
++ sample_size=10000
++ (( sample_size == 0 ))
++ awk '
+                        BEGIN {
+                                sample_size=10000
+                                row_label="20"
+                                format_string="%1.4f"
+                                invalid_number_symbol="*"
+                                sum = 0
+                                p50_idx = int(sample_size * 0.5)
+                                p90_idx = int(sample_size * 0.9)
+                                p99_idx = int(sample_size * 0.99)
+                                p100_idx = sample_size
+                        }
+
+                        # Empty pattern matches all rows
+                                     { sum += $0 }
+                        NR==1            { min = sample_size  > 0   ? sprintf(format_string, $0) : invalid_number_symbol }
+                        NR==p50_idx  { p50 = sample_size >= 3   ? sprintf(format_string, $0) : invalid_number_symbol }
+                        NR==p90_idx  { p90 = sample_size >= 10  ? sprintf(format_string, $0) : invalid_number_symbol }
+                        NR==p99_idx  { p99 = sample_size >= 100 ? sprintf(format_string, $0) : invalid_number_symbol }
+                        NR==p100_idx { p100 = sample_size > 0   ? sprintf(format_string, $0) : invalid_number_symbol }
+
+                        END {
+                                mean = sample_size > 0 ? sprintf(format_string, sum / NR) : invalid_number_symbol
+                                printf "%s,%d,%s,%s,%s,%s,%s,%s\n", row_label, sample_size, min, mean, p50, p90, p99, p100
+                        }
+                '
++ rm -rf /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con20-response.csv
++ for conn in ${concurrency[*]}
++ [[ ! -f /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con40.csv ]]
++ awk -F, '
+                $7 == 200 {ok++}
+                END{printf "40,%3.5f\n", (ok / 10000 * 100)}
+        '
++ awk -F, '$7 == 200 {print ($1 * 1000)}'
++ sort -g
+++ wc -l
++ oks=10000
++ (( oks == 0 ))
+++ tail -n1 /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con40.csv
+++ cut -d, -f8
++ duration=1.8776
+++ echo 10000/1.8776
+++ bc
++ throughput=5325
++ printf '%d,%f\n' 40 5325
++ percentiles_table_row /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con40-response.csv /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/latency.csv 40
++ local -r columnar_data_file=/sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con40-response.csv
++ check_file columnar_data_file
++ local arg_raw=columnar_data_file
++ local -n arg=columnar_data_file
++ [[ ! -f /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con40-response.csv ]]
++ return 0
++ local -r table_file=/sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/latency.csv
++ check_file table_file
++ local arg_raw=table_file
++ local -n arg=table_file
++ [[ ! -f /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/latency.csv ]]
++ return 0
++ local -r row_label=40
++ local -r format_string=%1.4f
++ local -i sample_size
+++ wc -l
++ sample_size=10000
++ (( sample_size == 0 ))
++ awk '
+                        BEGIN {
+                                sample_size=10000
+                                row_label="40"
+                                format_string="%1.4f"
+                                invalid_number_symbol="*"
+                                sum = 0
+                                p50_idx = int(sample_size * 0.5)
+                                p90_idx = int(sample_size * 0.9)
+                                p99_idx = int(sample_size * 0.99)
+                                p100_idx = sample_size
+                        }
+
+                        # Empty pattern matches all rows
+                                     { sum += $0 }
+                        NR==1            { min = sample_size  > 0   ? sprintf(format_string, $0) : invalid_number_symbol }
+                        NR==p50_idx  { p50 = sample_size >= 3   ? sprintf(format_string, $0) : invalid_number_symbol }
+                        NR==p90_idx  { p90 = sample_size >= 10  ? sprintf(format_string, $0) : invalid_number_symbol }
+                        NR==p99_idx  { p99 = sample_size >= 100 ? sprintf(format_string, $0) : invalid_number_symbol }
+                        NR==p100_idx { p100 = sample_size > 0   ? sprintf(format_string, $0) : invalid_number_symbol }
+
+                        END {
+                                mean = sample_size > 0 ? sprintf(format_string, sum / NR) : invalid_number_symbol
+                                printf "%s,%d,%s,%s,%s,%s,%s,%s\n", row_label, sample_size, min, mean, p50, p90, p99, p100
+                        }
+                '
++ rm -rf /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con40-response.csv
++ for conn in ${concurrency[*]}
++ [[ ! -f /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con60.csv ]]
++ awk -F, '
+                $7 == 200 {ok++}
+                END{printf "60,%3.5f\n", (ok / 10000 * 100)}
+        '
++ awk -F, '$7 == 200 {print ($1 * 1000)}'
++ sort -g
+++ wc -l
++ oks=9913
++ (( oks == 0 ))
+++ tail -n1 /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con60.csv
+++ cut -d, -f8
++ duration=111.5704
+++ echo 9913/111.5704
+++ bc
++ throughput=88
++ printf '%d,%f\n' 60 88
++ percentiles_table_row /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con60-response.csv /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/latency.csv 60
++ local -r columnar_data_file=/sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con60-response.csv
++ check_file columnar_data_file
++ local arg_raw=columnar_data_file
++ local -n arg=columnar_data_file
++ [[ ! -f /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con60-response.csv ]]
++ return 0
++ local -r table_file=/sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/latency.csv
++ check_file table_file
++ local arg_raw=table_file
++ local -n arg=table_file
++ [[ ! -f /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/latency.csv ]]
++ return 0
++ local -r row_label=60
++ local -r format_string=%1.4f
++ local -i sample_size
+++ wc -l
++ sample_size=9913
++ (( sample_size == 0 ))
++ awk '
+                        BEGIN {
+                                sample_size=9913
+                                row_label="60"
+                                format_string="%1.4f"
+                                invalid_number_symbol="*"
+                                sum = 0
+                                p50_idx = int(sample_size * 0.5)
+                                p90_idx = int(sample_size * 0.9)
+                                p99_idx = int(sample_size * 0.99)
+                                p100_idx = sample_size
+                        }
+
+                        # Empty pattern matches all rows
+                                     { sum += $0 }
+                        NR==1            { min = sample_size  > 0   ? sprintf(format_string, $0) : invalid_number_symbol }
+                        NR==p50_idx  { p50 = sample_size >= 3   ? sprintf(format_string, $0) : invalid_number_symbol }
+                        NR==p90_idx  { p90 = sample_size >= 10  ? sprintf(format_string, $0) : invalid_number_symbol }
+                        NR==p99_idx  { p99 = sample_size >= 100 ? sprintf(format_string, $0) : invalid_number_symbol }
+                        NR==p100_idx { p100 = sample_size > 0   ? sprintf(format_string, $0) : invalid_number_symbol }
+
+                        END {
+                                mean = sample_size > 0 ? sprintf(format_string, sum / NR) : invalid_number_symbol
+                                printf "%s,%d,%s,%s,%s,%s,%s,%s\n", row_label, sample_size, min, mean, p50, p90, p99, p100
+                        }
+                '
++ rm -rf /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con60-response.csv
++ for conn in ${concurrency[*]}
++ [[ ! -f /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con80.csv ]]
++ awk -F, '
+                $7 == 200 {ok++}
+                END{printf "80,%3.5f\n", (ok / 10000 * 100)}
+        '
++ awk -F, '$7 == 200 {print ($1 * 1000)}'
++ sort -g
+++ wc -l
++ oks=10000
++ (( oks == 0 ))
+++ tail -n1 /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con80.csv
+++ cut -d, -f8
++ duration=10.0290
+++ echo 10000/10.0290
+++ bc
++ throughput=997
++ printf '%d,%f\n' 80 997
++ percentiles_table_row /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con80-response.csv /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/latency.csv 80
++ local -r columnar_data_file=/sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con80-response.csv
++ check_file columnar_data_file
++ local arg_raw=columnar_data_file
++ local -n arg=columnar_data_file
++ [[ ! -f /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con80-response.csv ]]
++ return 0
++ local -r table_file=/sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/latency.csv
++ check_file table_file
++ local arg_raw=table_file
++ local -n arg=table_file
++ [[ ! -f /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/latency.csv ]]
++ return 0
++ local -r row_label=80
++ local -r format_string=%1.4f
++ local -i sample_size
+++ wc -l
++ sample_size=10000
++ (( sample_size == 0 ))
++ awk '
+                        BEGIN {
+                                sample_size=10000
+                                row_label="80"
+                                format_string="%1.4f"
+                                invalid_number_symbol="*"
+                                sum = 0
+                                p50_idx = int(sample_size * 0.5)
+                                p90_idx = int(sample_size * 0.9)
+                                p99_idx = int(sample_size * 0.99)
+                                p100_idx = sample_size
+                        }
+
+                        # Empty pattern matches all rows
+                                     { sum += $0 }
+                        NR==1            { min = sample_size  > 0   ? sprintf(format_string, $0) : invalid_number_symbol }
+                        NR==p50_idx  { p50 = sample_size >= 3   ? sprintf(format_string, $0) : invalid_number_symbol }
+                        NR==p90_idx  { p90 = sample_size >= 10  ? sprintf(format_string, $0) : invalid_number_symbol }
+                        NR==p99_idx  { p99 = sample_size >= 100 ? sprintf(format_string, $0) : invalid_number_symbol }
+                        NR==p100_idx { p100 = sample_size > 0   ? sprintf(format_string, $0) : invalid_number_symbol }
+
+                        END {
+                                mean = sample_size > 0 ? sprintf(format_string, sum / NR) : invalid_number_symbol
+                                printf "%s,%d,%s,%s,%s,%s,%s,%s\n", row_label, sample_size, min, mean, p50, p90, p99, p100
+                        }
+                '
++ rm -rf /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con80-response.csv
++ for conn in ${concurrency[*]}
++ [[ ! -f /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con100.csv ]]
++ awk -F, '
+                $7 == 200 {ok++}
+                END{printf "100,%3.5f\n", (ok / 10000 * 100)}
+        '
++ awk -F, '$7 == 200 {print ($1 * 1000)}'
++ sort -g
+++ wc -l
++ oks=10000
++ (( oks == 0 ))
+++ tail -n1 /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con100.csv
+++ cut -d, -f8
++ duration=2.6403
+++ bc
+++ echo 10000/2.6403
++ throughput=3787
++ printf '%d,%f\n' 100 3787
++ percentiles_table_row /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con100-response.csv /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/latency.csv 100
++ local -r columnar_data_file=/sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con100-response.csv
++ check_file columnar_data_file
++ local arg_raw=columnar_data_file
++ local -n arg=columnar_data_file
++ [[ ! -f /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con100-response.csv ]]
++ return 0
++ local -r table_file=/sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/latency.csv
++ check_file table_file
++ local arg_raw=table_file
++ local -n arg=table_file
++ [[ ! -f /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/latency.csv ]]
++ return 0
++ local -r row_label=100
++ local -r format_string=%1.4f
++ local -i sample_size
+++ wc -l
++ sample_size=10000
++ (( sample_size == 0 ))
++ awk '
+                        BEGIN {
+                                sample_size=10000
+                                row_label="100"
+                                format_string="%1.4f"
+                                invalid_number_symbol="*"
+                                sum = 0
+                                p50_idx = int(sample_size * 0.5)
+                                p90_idx = int(sample_size * 0.9)
+                                p99_idx = int(sample_size * 0.99)
+                                p100_idx = sample_size
+                        }
+
+                        # Empty pattern matches all rows
+                                     { sum += $0 }
+                        NR==1            { min = sample_size  > 0   ? sprintf(format_string, $0) : invalid_number_symbol }
+                        NR==p50_idx  { p50 = sample_size >= 3   ? sprintf(format_string, $0) : invalid_number_symbol }
+                        NR==p90_idx  { p90 = sample_size >= 10  ? sprintf(format_string, $0) : invalid_number_symbol }
+                        NR==p99_idx  { p99 = sample_size >= 100 ? sprintf(format_string, $0) : invalid_number_symbol }
+                        NR==p100_idx { p100 = sample_size > 0   ? sprintf(format_string, $0) : invalid_number_symbol }
+
+                        END {
+                                mean = sample_size > 0 ? sprintf(format_string, sum / NR) : invalid_number_symbol
+                                printf "%s,%d,%s,%s,%s,%s,%s,%s\n", row_label, sample_size, min, mean, p50, p90, p99, p100
+                        }
+                '
++ rm -rf /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/con100-response.csv
++ csv_to_dat /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/success.csv /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/throughput.csv /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/latency.csv
++ (( 3 == 0 ))
++ for arg in "$@"
++ [[ /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/success.csv =~ \.csv$ ]]
++ [[ ! -f /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/success.csv ]]
++ for arg in "$@"
++ [[ /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/throughput.csv =~ \.csv$ ]]
++ [[ ! -f /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/throughput.csv ]]
++ for arg in "$@"
++ [[ /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/latency.csv =~ \.csv$ ]]
++ [[ ! -f /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption/latency.csv ]]
++ for file in "$@"
++ echo -n '#'
++ tr , ' '
++ column -t
++ for file in "$@"
++ echo -n '#'
++ tr , ' '
++ column -t
++ for file in "$@"
++ echo -n '#'
++ tr , ' '
++ column -t
++ generate_gnuplots /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption /sledge/runtime/experiments/concurrency
++ local -r results_directory=/sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption
++ local -r experiment_directory=/sledge/runtime/experiments/concurrency
++ command -v gnuplot
++ '[' -z /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption ']'
++ '[' -z /sledge/runtime/experiments/concurrency ']'
++ cd /sledge/runtime/experiments/concurrency/res/1627875072/edf_nopreemption
++ shopt -s nullglob
++ for gnuplot_file in "$experiment_directory"/*.gnuplot
++ gnuplot /sledge/runtime/experiments/concurrency/latency.gnuplot
++ for gnuplot_file in "$experiment_directory"/*.gnuplot
++ gnuplot /sledge/runtime/experiments/concurrency/success.gnuplot
++ for gnuplot_file in "$experiment_directory"/*.gnuplot
++ gnuplot /sledge/runtime/experiments/concurrency/throughput.gnuplot
++ cd /sledge/runtime/experiments/concurrency
++ printf '[OK]\n'
+[OK]
++ return 0
++ return 0
++ return 0
++ __framework_sh__stop_runtime
++ printf 'Stopping Runtime: '
+Stopping Runtime: + pkill sledgert
++ (( 0 > 1 ))
++ pkill hey
++ (( 1 > 1 ))
++ fn_exists experiment_server_post
++ declare -f -F experiment_server_post
++ return 1
++ printf '[OK]\n'
+[OK]
++ __framework_sh__unset_env_file /sledge/runtime/experiments/concurrency/edf_nopreemption.env
++ local envfile=/sledge/runtime/experiments/concurrency/edf_nopreemption.env
++ [[ ! -f /sledge/runtime/experiments/concurrency/edf_nopreemption.env ]]
++ read -r line
++ echo unset SLEDGE_SCHEDULER
+unset SLEDGE_SCHEDULER
++ unset SLEDGE_SCHEDULER
++ read -r line
++ echo unset SLEDGE_DISABLE_PREEMPTION
+unset SLEDGE_DISABLE_PREEMPTION
++ unset SLEDGE_DISABLE_PREEMPTION
++ read -r line
++ for envfile in "$__framework_sh__application_directory"/*.env
++ (( envfiles_found++ ))
++ echo dir is /sledge/runtime/experiments/concurrency
+dir is /sledge/runtime/experiments/concurrency
++ __framework_sh__run_both_env /sledge/runtime/experiments/concurrency/edf_preemption.env
++ local envfile=/sledge/runtime/experiments/concurrency/edf_preemption.env
++ __framework_sh__load_env_file /sledge/runtime/experiments/concurrency/edf_preemption.env
++ local envfile=/sledge/runtime/experiments/concurrency/edf_preemption.env
++ [[ ! -f /sledge/runtime/experiments/concurrency/edf_preemption.env ]]
++ local short_name
+++ basename /sledge/runtime/experiments/concurrency/edf_preemption
++ short_name=edf_preemption
++ printf 'Running %s\n' edf_preemption
+Running edf_preemption
++ read -r line
++ echo export SLEDGE_SCHEDULER=EDF
+export SLEDGE_SCHEDULER=EDF
++ export SLEDGE_SCHEDULER=EDF
++ SLEDGE_SCHEDULER=EDF
++ read -r line
++ echo export SLEDGE_DISABLE_PREEMPTION=false
+export SLEDGE_DISABLE_PREEMPTION=false
++ export SLEDGE_DISABLE_PREEMPTION=false
++ SLEDGE_DISABLE_PREEMPTION=false
++ read -r line
++ echo export SLEDGE_SIGALRM_HANDLER=TRIAGED
+export SLEDGE_SIGALRM_HANDLER=TRIAGED
++ export SLEDGE_SIGALRM_HANDLER=TRIAGED
++ SLEDGE_SIGALRM_HANDLER=TRIAGED
++ read -r line
++ __framework_sh__create_and_export_results_directory edf_preemption
++ local -r subdirectory=edf_preemption
++ local dir=/sledge/runtime/experiments/concurrency/res/1627875072/edf_preemption
++ mkdir -p /sledge/runtime/experiments/concurrency/res/1627875072/edf_preemption
++ export RESULTS_DIRECTORY=/sledge/runtime/experiments/concurrency/res/1627875072/edf_preemption
++ RESULTS_DIRECTORY=/sledge/runtime/experiments/concurrency/res/1627875072/edf_preemption
++ __framework_sh__run_server background
++ (( 1 != 1 ))
++ [[ background =~ ^(foreground|background)$ ]]
++ local -r how_to_run=background
++ __framework_sh__start_runtime background /sledge/runtime/experiments/concurrency/spec.json
++ printf 'Starting Runtime: '
+Starting Runtime: + (( 2 != 2 ))
++ [[ background =~ ^(foreground|background)$ ]]
++ [[ ! -f /sledge/runtime/experiments/concurrency/spec.json ]]
++ [[ /sledge/runtime/experiments/concurrency/spec.json != *.json ]]
++ local -r how_to_run=background
++ local -r specification=/sledge/runtime/experiments/concurrency/spec.json
++ local -r log_name=log.txt
++ local log=/sledge/runtime/experiments/concurrency/res/1627875072/edf_preemption/log.txt
++ __framework_sh__log_environment
++ validate_dependencies git
++ for required_binary in "$@"
++ command -v git
++ return 0
++ echo '*******'
++ echo '* Git *'
++ echo '*******'
++ git log
++ head -n 1
++ cut '-d ' -f2
++ git status
++ echo ''
++ echo '************'
++ echo '* Makefile *'
++ echo '************'
+++ path_join /sledge/runtime/experiments/bash_libraries ../../Makefile
+++ local base=/sledge/runtime/experiments/bash_libraries
+++ local relative=../../Makefile
++++ dirname ../../Makefile
+++ relative_path=../..
++++ basename ../../Makefile
+++ file_name=Makefile
++++ cd /sledge/runtime/experiments/bash_libraries
++++ cd ../..
++++ pwd
+++ absolute_path=/sledge/runtime
+++ echo /sledge/runtime/Makefile
++ cat /sledge/runtime/Makefile
++ echo ''
++ echo '**********'
++ echo '* Run.sh *'
++ echo '**********'
+++ path_join /sledge/runtime/experiments/concurrency ./run.sh
+++ local base=/sledge/runtime/experiments/concurrency
+++ local relative=./run.sh
++++ dirname ./run.sh
+++ relative_path=.
++++ basename ./run.sh
+++ file_name=run.sh
++++ cd /sledge/runtime/experiments/concurrency
++++ cd .
++++ pwd
+++ absolute_path=/sledge/runtime/experiments/concurrency
+++ echo /sledge/runtime/experiments/concurrency/run.sh
++ cat /sledge/runtime/experiments/concurrency/run.sh
++ echo ''
++ echo '************'
++ echo '* Hardware *'
++ echo '************'
++ lscpu
++ echo ''
++ echo '*************'
++ echo '* Execution *'
++ echo '*************'
++ case "$how_to_run" in
++ sleep 1
++ sledgert /sledge/runtime/experiments/concurrency/spec.json
++ printf '[OK]\n'
+[OK]
++ return 0
++ return 0
++ __framework_sh__run_client
++ echo localhost /sledge/runtime/experiments/concurrency/res/1627875072/edf_preemption
+localhost /sledge/runtime/experiments/concurrency/res/1627875072/edf_preemption
++ experiment_client localhost /sledge/runtime/experiments/concurrency/res/1627875072/edf_preemption
++ local -r target_hostname=localhost
++ local -r results_directory=/sledge/runtime/experiments/concurrency/res/1627875072/edf_preemption
++ run_samples localhost
++ (( 1 != 1 ))
++ [[ -z localhost ]]
++ local hostname=localhost
+++ path_join /sledge/runtime/experiments/concurrency ../../include/perf_window_t.h
+++ local base=/sledge/runtime/experiments/concurrency
+++ local relative=../../include/perf_window_t.h
++++ dirname ../../include/perf_window_t.h
+++ relative_path=../../include
++++ basename ../../include/perf_window_t.h
+++ file_name=perf_window_t.h
++++ cd /sledge/runtime/experiments/concurrency
++++ cd ../../include
++++ pwd
+++ absolute_path=/sledge/runtime/include
+++ echo /sledge/runtime/include/perf_window_t.h
++ local -r perf_window_path=/sledge/runtime/include/perf_window_t.h
++ local -i perf_window_buffer_size
+++ grep '#define PERF_WINDOW_BUFFER_SIZE'
+++ cut '-d ' -f3
++ perf_window_buffer_size=16
++ local -ir perf_window_buffer_size
++ printf 'Running Samples: '
+Running Samples: + hey -n 16 -c 16 -q 200 -cpus 3 -o csv -m GET http://localhost:10000
++ printf '[OK]\n'
+[OK]
++ return 0
++ run_experiments localhost /sledge/runtime/experiments/concurrency/res/1627875072/edf_preemption
++ (( 2 != 2 ))
++ [[ -z localhost ]]
++ [[ ! -d /sledge/runtime/experiments/concurrency/res/1627875072/edf_preemption ]]
++ local hostname=localhost
++ local results_directory=/sledge/runtime/experiments/concurrency/res/1627875072/edf_preemption
++ printf 'Running Experiments:\n'
+Running Experiments:
++ for conn in ${concurrency[*]}
++ printf '\t%d Concurrency: ' 1
+        1 Concurrency: + hey -n 10000 -c 1 -cpus 2 -o csv -m GET http://localhost:10000
++ get_result_count /sledge/runtime/experiments/concurrency/res/1627875072/edf_preemption/con1.csv
++ (( 1 != 1 ))
++ [[ ! -f /sledge/runtime/experiments/concurrency/res/1627875072/edf_preemption/con1.csv ]]
++ [[ ! -s /sledge/runtime/experiments/concurrency/res/1627875072/edf_preemption/con1.csv ]]
++ local -r file=/sledge/runtime/experiments/concurrency/res/1627875072/edf_preemption/con1.csv
+++ wc -l
++ local -i count=10000
++ (( 1 == 2 ))
++ (( count > 0 ))
++ return 0
++ printf '[OK]\n'
+[OK]
++ for conn in ${concurrency[*]}
++ printf '\t%d Concurrency: ' 20
+        20 Concurrency: + hey -n 10000 -c 20 -cpus 2 -o csv -m GET http://localhost:10000
