@@ -88,7 +88,17 @@
 		"worker_thread_execute_epoll_loop.h": "c",
 		"sandbox_set_as_running.h": "c",
 		"sandbox_summarize_page_allocations.h": "c",
-		"memory": "cpp"
+		"memory": "cpp",
+		"ck_pr.h": "c",
+		"getcycles.h": "c",
+		"__functional_base": "c",
+		"__functional_base_03": "c",
+		"__tuple": "c",
+		"type_traits": "c",
+		"functional": "c",
+		"limits": "c",
+		"ratio": "c",
+		"tuple": "c"
 	},
 	"files.exclude": {
 		"**/.git": true,
