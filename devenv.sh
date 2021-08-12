@@ -178,6 +178,7 @@ envrun() {
 			--security-opt seccomp:unconfined \
 			--name=${SYS_DOC_NAME} \
 			--detach \
+			--network=host \
 			--mount type=bind,src="$(cd "$(dirname "${0}")" && pwd -P || exit 1),target=/${SYS_NAME}" \
 			${SYS_DOC_NAMETAG} /bin/sleep 99999999 > /dev/null
 	fi

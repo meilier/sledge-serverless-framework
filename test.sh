@@ -2,10 +2,10 @@
 # Test Driver Script
 # TODO: Consider refactoring into Make infrastructure
 
-if [[ $0 != "./test.sh" ]]; then
-	echo "Must run in same directory as ./test.sh"
-	exit 1
-fi
+# if [[ $0 != "./test.sh" ]]; then
+# 	echo "Must run in same directory as ./test.sh"
+# 	exit 1
+# fi
 
 base_dir=$(pwd)
 
@@ -145,7 +145,7 @@ image_resize_by_resolution() {
 	fi
 	pushd "$base_dir/runtime/experiments/applications/imageresize/by_resolution" || exit 1
 	# ./install.sh || exit 1
-	./run.sh || failed_tests+=("image_resize_resolution")
+	bash -x run.sh || failed_tests+=("image_resize_resolution")
 	popd || exit 1
 	return 0
 }
@@ -179,7 +179,7 @@ concurrency() {
 	fi
 	pushd "$base_dir/runtime/experiments/concurrency/" || exit 1
 	# ./install.sh || exit 1
-	./run.sh || failed_tests+=("concurrency")
+	bash -x run.sh || failed_tests+=("concurrency")
 	popd || exit 1
 	return 0
 }
