@@ -44,12 +44,12 @@ BINARY_NAME=sledgert
 # CFLAGS += -DNDEBUG
 
 # Redirects debuglogs to /runtime/bin/sledge.log 
-# CFLAGS += -DLOG_TO_FILE
+CFLAGS += -DLOG_TO_FILE
 
 # Various Informational Logs for Debugging
 # CFLAGS += -DLOG_HTTP_PARSER
 # CFLAGS += -DLOG_STATE_CHANGES
-# CFLAGS += -DLOG_LOCK_OVERHEAD
+CFLAGS += -DLOG_LOCK_OVERHEAD
 # CFLAGS += -DLOG_CONTEXT_SWITCHES
 # CFLAGS += -DLOG_ADMISSIONS_CONTROL
 # CFLAGS += -DLOG_REQUEST_ALLOCATION
@@ -118,6 +118,7 @@ clean:
 	@rm -f core
 	@echo "Cleaning up runtime"
 	@rm -f bin/${BINARY_NAME}
+	@rm -f /sledge/runtime/experiments/concurrency/res-single/sledge.log
 #	@echo "Cleaning up tools"
 #	@make --no-print-directory -C tools clean
 

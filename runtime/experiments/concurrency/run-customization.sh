@@ -22,7 +22,7 @@ if ! command -v hey > /dev/null; then
 fi
 
 declare -gi iterations=10000
-declare -ga concurrency=(1 20 40 60 80 100)
+declare -ga concurrency=(100)
 
 run_samples() {
 	if (($# != 1)); then

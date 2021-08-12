@@ -16,7 +16,8 @@ sandbox_summarize_page_allocations(struct sandbox *sandbox)
 	snprintf(sandbox_page_allocations_log_path, 99, "%s_%d_page_allocations.csv", sandbox->module->name,
 	         sandbox->module->port);
 
-	debuglog("Logging to %s", sandbox_page_allocations_log_path);
+	//debuglog("Logging to %s", sandbox_page_allocations_log_path);
+	debuglog("Logging to %s %s", sandbox_page_allocations_log_path, sandbox->id);
 
 	FILE *sandbox_page_allocations_log = fopen(sandbox_page_allocations_log_path, "a");
 

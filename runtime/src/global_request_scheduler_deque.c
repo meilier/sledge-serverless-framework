@@ -17,6 +17,7 @@ global_request_scheduler_deque_add(void *sandbox_request_raw)
 	struct sandbox_request *sandbox_request = (struct sandbox_request *)sandbox_request_raw;
 	int                     return_code     = 1;
 
+	debuglog("deque have elements: %lu",global_request_scheduler_deque->bottom - global_request_scheduler_deque->top)
 	return_code = deque_push_sandbox(global_request_scheduler_deque, &sandbox_request);
 
 	if (return_code != 0) return NULL;

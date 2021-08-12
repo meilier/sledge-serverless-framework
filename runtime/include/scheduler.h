@@ -307,6 +307,7 @@ scheduler_block(void)
 
 	assert(current_sandbox->state == SANDBOX_RUNNING);
 	sandbox_set_as_blocked(current_sandbox, SANDBOX_RUNNING);
+	debuglog("from block %lu", current_sandbox->id)
 	generic_thread_dump_lock_overhead();
 
 	scheduler_yield();

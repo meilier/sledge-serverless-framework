@@ -15,7 +15,8 @@
 
 #define SANDBOX_FILE_DESCRIPTOR_PREOPEN_MAGIC (707707707) /* upside down LOLLOLLOL 🤣😂🤣*/
 #define SANDBOX_MAX_FD_COUNT                  32
-#define SANDBOX_MAX_MEMORY                    (1L << 32) /* 4GB */
+//#define SANDBOX_MAX_MEMORY                    (1L << 32) /* 4GB */
+#define SANDBOX_MAX_MEMORY                    (1L << 25) /* 128MB */
 
 #ifdef LOG_SANDBOX_MEMORY_PROFILE
 #define SANDBOX_PAGE_ALLOCATION_TIMESTAMP_COUNT 1024

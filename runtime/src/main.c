@@ -61,6 +61,7 @@ runtime_allocate_available_cores()
 
 	/* Find the number of processors currently online */
 	runtime_total_online_processors = sysconf(_SC_NPROCESSORS_ONLN);
+	//runtime_total_online_processors = 3;
 	printf("\tCore Count (Online): %u\n", runtime_total_online_processors);
 
 	/* If more than two cores are available, leave core 0 free to run OS tasks */

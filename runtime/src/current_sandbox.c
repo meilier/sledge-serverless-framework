@@ -104,6 +104,7 @@ current_sandbox_start(void)
 
 done:
 	/* Cleanup connection and exit sandbox */
+	debuglog("from done %lu", sandbox->id)
 	generic_thread_dump_lock_overhead();
 	scheduler_yield();
 

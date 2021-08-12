@@ -11,8 +11,10 @@
 #define RUNTIME_EXPECTED_EXECUTION_US_MAX 3600000000
 #define RUNTIME_HTTP_REQUEST_SIZE_MAX     100000000 /* 100 MB */
 #define RUNTIME_HTTP_RESPONSE_SIZE_MAX    100000000 /* 100 MB */
-#define RUNTIME_LOG_FILE                  "sledge.log"
+//#define RUNTIME_LOG_FILE                  "sledge.log"
+#define RUNTIME_LOG_FILE                  "/sledge/runtime/experiments/concurrency/res/sledge.log"
 #define RUNTIME_MAX_EPOLL_EVENTS          128
+//#define RUNTIME_MAX_EPOLL_EVENTS          512
 #define RUNTIME_MAX_SANDBOX_REQUEST_COUNT (1 << 19)
 #define RUNTIME_MAX_WORKER_COUNT          32 /* Static buffer size for per-worker globals */
 #define RUNTIME_READ_WRITE_VECTOR_LENGTH  16

@@ -101,6 +101,7 @@ listener_thread_main(void *dummy)
 		assert(descriptor_count > 0);
 
 		uint64_t request_arrival_timestamp = __getcycles();
+		//debuglog("Time use from the beginning %lu", request_arrival_timestamp- generic_thread_start_timestamp)
 		for (int i = 0; i < descriptor_count; i++) {
 			/* Check Event to determine if epoll returned an error */
 			if ((epoll_events[i].events & EPOLLERR) == EPOLLERR) {
@@ -181,12 +182,13 @@ listener_thread_main(void *dummy)
 				  sandbox_request_allocate(module, module->name, client_socket,
 				                           (const struct sockaddr *)&client_address,
 				                           request_arrival_timestamp, work_admitted);
-
+				//debuglog("request_arrival_timestamp is %lu", request_arrival_timestamp)
 				/* Add to the Global Sandbox Request Scheduler */
 				global_request_scheduler_add(sandbox_request);
 
 			} /* while true */
 		}         /* for loop */
+		debuglog("from listener")
 		generic_thread_dump_lock_overhead();
 	} /* while true */
 
