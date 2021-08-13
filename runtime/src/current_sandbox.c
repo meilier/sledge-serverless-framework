@@ -60,22 +60,27 @@ current_sandbox_disable_preemption(struct sandbox *sandbox)
 void
 current_sandbox_start(void)
 {
+	uint64_t startC = __getcycles();
 	struct sandbox *sandbox = current_sandbox_get();
+	debuglog("current_sandbox_get use %lu", __getcycles() - startC)
+	debuglog("current_sandbox id is %lu", sandbox->id)
 	assert(sandbox != NULL);
 	assert(sandbox->state == SANDBOX_RUNNING);
 
 	char *error_message = "";
-
+	startC = __getcycles();
 	sandbox_initialize_stdio(sandbox);
 
 	sandbox_open_http(sandbox);
-
+	debuglog("sandbox_open_http use %lu", __getcycles() - startC)
+	startC = __getcycles();
 	if (sandbox_receive_request(sandbox) < 0) {
 		error_message = "Unable to receive or parse client request\n";
 		goto err;
 	};
-
+	debuglog("sandbox_receive_request use %lu", __getcycles() - startC)
 	/* Initialize sandbox memory */
+	startC = __getcycles();
 	struct module *current_module = sandbox_get_module(sandbox);
 	module_initialize_globals(current_module);
 	module_initialize_memory(current_module);
@@ -87,13 +92,15 @@ current_sandbox_start(void)
 	sandbox->return_value = module_main(current_module, argument_count, sandbox->arguments_offset);
 	current_sandbox_disable_preemption(sandbox);
 	sandbox->completion_timestamp = __getcycles();
-
+	debuglog("run module main use %lu", __getcycles() - startC)
+	startC = __getcycles();
 	/* Retrieve the result, construct the HTTP response, and send to client */
 	if (sandbox_send_response(sandbox) < 0) {
 		error_message = "Unable to build and send client response\n";
 		goto err;
 	};
-
+	debuglog("sandbox_send_response use %lu", __getcycles() - startC)
+	startC = __getcycles();
 	http_total_increment_2xx();
 
 	sandbox->response_timestamp = __getcycles();
@@ -101,6 +108,7 @@ current_sandbox_start(void)
 	assert(sandbox->state == SANDBOX_RUNNING);
 	sandbox_close_http(sandbox);
 	sandbox_set_as_returned(sandbox, SANDBOX_RUNNING);
+	debuglog("sandbox_set_as_returned use %lu", __getcycles() - startC)
 
 done:
 	/* Cleanup connection and exit sandbox */
