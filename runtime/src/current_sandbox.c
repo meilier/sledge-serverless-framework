@@ -83,16 +83,27 @@ current_sandbox_start(void)
 	startC = __getcycles();
 	struct module *current_module = sandbox_get_module(sandbox);
 	module_initialize_globals(current_module);
+	debuglog("module_initialize_globals use %lu", __getcycles() - startC)
+	startC = __getcycles();
 	module_initialize_memory(current_module);
+	debuglog("module_initialize_memory use %lu", __getcycles() - startC)
+	startC = __getcycles();
 	sandbox_setup_arguments(sandbox);
+	debuglog("sandbox_setup_arguments use %lu", __getcycles() - startC)
 
 	/* Executing the function */
+	startC = __getcycles();
 	int32_t argument_count = module_get_argument_count(current_module);
 	current_sandbox_enable_preemption(sandbox);
+	debuglog("current_sandbox_enable_preemption use %lu", __getcycles() - startC);
+	startC = __getcycles();
 	sandbox->return_value = module_main(current_module, argument_count, sandbox->arguments_offset);
+	debuglog("run module_main use %lu", __getcycles() - startC)
+	startC = __getcycles();
 	current_sandbox_disable_preemption(sandbox);
+	debuglog("current_sandbox_disable_preemption use %lu", __getcycles() - startC)
 	sandbox->completion_timestamp = __getcycles();
-	debuglog("run module main use %lu", __getcycles() - startC)
+	
 	startC = __getcycles();
 	/* Retrieve the result, construct the HTTP response, and send to client */
 	if (sandbox_send_response(sandbox) < 0) {

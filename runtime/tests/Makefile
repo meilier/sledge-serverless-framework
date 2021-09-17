@@ -8,12 +8,21 @@ TESTSP=fibonacci_pure
 
 TESTSRTP=$(TESTSP:%=%_rt)
 
+fib_pure: $(TESTSRTP)
+
+
+TESTFIB=fibonacci
+
+TESTFIBRT=$(TESTFIB:%=%_rt)
+
+fib: $(TESTFIBRT)
+
 .PHONY: all clean rttests tinyekf cifar10 gocr sod
 
 all: rttests tinyekf cifar10 gocr sod
 	@echo "Test Compilation done!"
 
-fib_pure: $(TESTSRTP)
+
 
 rttests: $(TESTSRT)
 
